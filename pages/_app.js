@@ -15,6 +15,7 @@ export default function App({ Component, pageProps }) {
           <p className='text-center font-clash text-sm font-semibold w-[80vw] max-w-sm'>
             THIS SITE CAN ONLY BE VIEWED ON A DESKTOP DEVICE.
           </p>
+           
         </div>
       </div>
     </div>
