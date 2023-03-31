@@ -7,6 +7,10 @@
   box-sizing: border-box;
 }
 
+body {
+  @apply bg-[#191919] md:bg-white;
+}
+
 .main-container {
   @apply pr-[500px];
 }
