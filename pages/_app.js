@@ -1,5 +1,7 @@
-import '@/styles/globals.css'
+import '@/styles/globals.css';
+import { useSmoothScroll } from '@/utils/useSmoothScroll';
 
 export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  useSmoothScroll();
+  return <Component {...pageProps} />;
 }
