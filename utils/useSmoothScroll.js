@@ -7,13 +7,16 @@ gsap.registerPlugin(ScrollTrigger);
 
 export let lenis;
 
-export function useSmoothScroll() {
+export function useSmoothScroll(ref) {
   useEffect(() => {
-    lenis = new Lenis({
-      duration: 3.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'both',
-    });
+    if (ref) {
+      lenis = new Lenis({
+        duration: 3.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'horizontal',
+        wrapper: ref.current,
+      });
+    }
     lenis.on('scroll', ScrollTrigger.update);
 
     gsap.ticker.add((time) => {
@@ -25,5 +28,5 @@ export function useSmoothScroll() {
     }
 
     requestAnimationFrame(raf);
-  }, []);
+  }, [ref]);
 }

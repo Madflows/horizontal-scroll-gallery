@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: 'Satoshi', sans-serif;
+  box-sizing: border-box;
+}
+
+.main-container {
+  @apply pr-[500px];
+}
+
+.content {
+  @apply flex h-screen justify-center items-center relative;
+}
+
+.gallery {
+  @apply grid relative items-center bg-white;
+  grid-template-columns: repeat(50, 2%);
+  grid-template-rows: repeat(50, 2%);
+  width: 250vw;
+  padding-left: 12vw;
+  height: 100%;
+}
+
+.gallery-helper {
+  grid-area: 43/1 / span 2 / span 1;
+  font-size: 20px;
+}
+
+.behind-text {
+  @apply absolute top-[50%] pointer-events-none left-0 font-clash uppercase text-[5em] font-semibold tracking-[50px];
+  transform: translateY(-50%);
+  margin-left: 50vw;
+
+  &.fill {
+    color: rgba(0, 0, 0, 0.2);
+  }
+  &.text-outline {
+    z-index: 2;
+    mix-blend-mode: overlay;
+  }
+}
+
+// Gallery Item
+.galleryItem {
+  @apply z-[1] h-full;
+
+  .gallery-item-image {
+    @apply w-full h-full overflow-hidden relative;
+    .gallery-item-img-inner {
+      @apply bg-cover bg-center origin-center w-full h-full will-change-transform scale-110;
+      transition: transform 2s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+  }
+}
+
+// FOOTER
+.footer {
+  @apply h-full w-screen grid place-items-center bg-gradient-to-br from-slate-800 to-slate-950;
+  z-index: -1;
+
+  .contact-addresses {
+    @apply w-[50vw] grid grid-cols-3 gap-[10%] text-[#fff];
+  }
+
+  h1 {
+    @apply font-clash font-light uppercase mb-[30px] tracking-[1px] text-[36px];
+  }
+
+  p {
+    @apply my-[10px];
+  }
+}
+
+.progress-percent {
+  color: transparent;
+  -webkit-text-stroke: 1px #fff;
+  transition: clip-path 275ms ease;
+  overflow: hidden;
+
+  &:hover::before {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  &::before {
+    position: absolute;
+    content: attr(data-content);
+    color: #fff;
+    // clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
+   clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+    transition: clip-path 275ms ease;
+  }
+}
+
+
+// NAVBAR 
+.navbar {
+  @apply w-full flex justify-between font-medium items-center p-[50px] z-[1] fixed mix-blend-difference text-white;
+
+  ul {
+    @apply flex gap-4;
+
+    li {
+      @apply my-0;
+
+      a {
+        @apply py-2 px-3 hover:bg-slate-400/20 rounded-md capitalize;
+      }
+    }
+  }
+}
