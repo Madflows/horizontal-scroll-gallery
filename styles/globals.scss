@@ -49,6 +49,19 @@
 
   .gallery-item-image {
     @apply w-full h-full overflow-hidden relative;
+
+    clip-path: inset(0% 100% 0% 0%);
+    transition: clip-path 1s cubic-bezier(0.77, 0, 0.175, 1);
+
+    &.reveal {
+      clip-path: inset(0% 0% 0% 0%);
+
+      .gallery-item-img-inner {
+        transform: scale(1);
+      }
+    }
+
+
     .gallery-item-img-inner {
       @apply bg-cover bg-center origin-center w-full h-full will-change-transform scale-110;
       transition: transform 2s cubic-bezier(0.77, 0, 0.175, 1);
